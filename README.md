@@ -12,14 +12,38 @@
 
 ## 安装
 
-### 方式一：直接使用（推荐）
-
-Plugin 已安装在 `~/.claude/plugins/lark-testcase-generator/`
-
-### 方式二：开发模式
+### 方式一：通过 Marketplace 安装（推荐）
 
 ```bash
-claude --plugin-dir ~/.claude/plugins/lark-testcase-generator
+# 添加 Marketplace
+/plugin marketplace add qimohan/lark-testcase-generator
+
+# 安装插件
+/plugin install lark-testcase-generator
+```
+
+或使用交互式界面：
+
+```bash
+/plugin
+```
+
+在 **Discover** 标签页中浏览和安装。
+
+### 方式二：本地开发模式
+
+用于开发和测试，临时加载插件：
+
+```bash
+claude --plugin-dir /path/to/lark-testcase-generator
+```
+
+### 验证安装
+
+安装后重启 Claude Code，运行以下命令检查：
+
+```bash
+/lark-testcase-generator:check-mcp
 ```
 
 ## 前置要求
