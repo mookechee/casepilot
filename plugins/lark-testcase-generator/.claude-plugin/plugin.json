@@ -17,6 +17,5 @@
     "飞书项目"
   ],
   "commands": "./commands/",
-  "skills": "./skills/",
-  "hooks": "./hooks/hooks.json"
+  "skills": "./skills/"
 }
