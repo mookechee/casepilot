@@ -21,6 +21,5 @@
     "四阶段"
   ],
   "commands": "./commands/",
-  "skills": "./skills/",
-  "hooks": "./hooks/hooks.json"
+  "skills": "./skills/"
 }
