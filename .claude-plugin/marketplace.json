@@ -12,13 +12,13 @@
       "name": "casepilot",
       "source": "./plugins/casepilot",
       "description": "从需求文档自动生成 Markmap 思维导图测试用例。支持飞书项目单、云文档和本地文件。",
-      "version": "0.3.1",
+      "version": "0.3.2",
       "author": {
         "name": "mookechee"
       },
       "repository": "https://github.com/mookechee/casepilot",
       "license": "MIT",
-      "keywords": ["casepilot", "testcase", "测试用例", "需求分析", "测试点", "xmind", "markdown", "markmap", "lark", "feishu", "飞书项目", "ai", "四阶段"],
+      "keywords": ["casepilot", "testcase", "测试用例", "需求分析", "测试点", "xmind", "markdown", "markmap", "lark", "feishu", "飞书项目", "ai", "四阶段", "7步工作流"],
       "category": "productivity"
     }
   ]
