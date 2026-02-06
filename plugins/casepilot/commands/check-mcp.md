@@ -10,26 +10,28 @@ description: 检查飞书MCP服务器配置状态，并提供配置指引。
 
 | MCP 服务器 | 用途 | 必需 |
 |-----------|------|------|
-| `lark-prj-remote` | 读取飞书项目单子信息 | 可选（使用飞书项目单时需要） |
+| `lark-prj-new`（回退 `lark-prj-remote`） | 读取飞书项目单子信息 | 可选（使用飞书项目单时需要） |
 | `lark-mcp-remote` | 读取飞书云文档内容 | 可选（使用飞书文档时需要） |
 
 ## 检查流程
 
-### 步骤 1：检查 lark-prj-remote
+### 步骤 1：检查 lark-prj-new
 
-尝试调用 `mcp__lark-prj-remote__get_workitem_info`，参数：
+尝试调用 `mcp__lark-prj-new__get_workitem_info`，参数：
 ```json
 {
   "work_item_type": "story"
 }
 ```
 
-- **成功**：显示 ✅ lark-prj-remote 已配置
-- **失败**：显示 ❌ lark-prj-remote 未配置，提供配置指引
+- **成功**：显示 ✅ lark-prj-new 已配置
+- **失败**：尝试回退调用 `mcp__lark-prj-remote__get_workitem_info`
+  - **回退成功**：显示 ✅ lark-prj-remote 已配置（旧版工具名）
+  - **回退失败**：显示 ❌ lark-prj-new 未配置，提供配置指引
 
 ### 步骤 2：检查 lark-mcp-remote
 
-尝试调用 `mcp__lark-mcp-remote__wiki_v2_space_list`，参数：
+尝试调用 `mcp__lark-mcp-remote__im_v1_chat_list`，参数：
 ```json
 {
   "query": {}
@@ -44,7 +46,7 @@ description: 检查飞书MCP服务器配置状态，并提供配置指引。
 ```
 🔍 MCP 服务器配置检查结果
 
-✅ lark-prj-remote: 已配置
+✅ lark-prj-new: 已配置
    - 可使用飞书项目单 URL 生成测试用例
 
 ❌ lark-mcp-remote: 未配置
@@ -57,7 +59,9 @@ description: 检查飞书MCP服务器配置状态，并提供配置指引。
 
 ## 配置指引
 
-### 配置 lark-prj-remote
+### 配置飞书项目 MCP（lark-prj-new / lark-prj-remote）
+
+MCP 工具名可能为 `lark-prj-new` 或 `lark-prj-remote`，取决于安装版本。两者功能一致，CasePilot 会自动尝试两者。
 
 1. 获取飞书项目的 API 凭证
 2. 在 Claude Code 设置中添加 MCP 服务器：
@@ -101,6 +105,6 @@ description: 检查飞书MCP服务器配置状态，并提供配置指引。
 ## 使用建议
 
 - **仅使用本地文件**：无需配置任何 MCP 服务器
-- **使用飞书项目单**：需配置 `lark-prj-remote`
+- **使用飞书项目单**：需配置 `lark-prj-new`（或 `lark-prj-remote`）
 - **使用飞书云文档**：需配置 `lark-mcp-remote`
 - **完整功能**：同时配置两个 MCP 服务器
